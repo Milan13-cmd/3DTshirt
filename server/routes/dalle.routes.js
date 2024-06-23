@@ -1,13 +1,13 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 dotenv.config();
 
 const router = express.Router();
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 
 });
 
@@ -26,7 +26,7 @@ router.route('/').post(async (req, res) => {
         size: '1024x1024',
         response_format: 'b64_json'
     })
-    
+    console.log(response)
     const image = response.data[0].b64_json;
    
     res.status(200).json({ photo: image })

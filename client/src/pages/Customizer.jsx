@@ -23,6 +23,7 @@ const Customizer = () => {
     logoShirt: true,
     stylishShirt: false,
   })
+  const [isopen, setIsopen] = useState(false);
 
 
   // show tab content depending on the activetab
@@ -98,6 +99,9 @@ const Customizer = () => {
       case 'stylishShirt':
         state.isFullTexture = !activeFilterTab[tabName]; 
         break;
+      case "download":
+        downloadCanvasToImage();
+        return; // We don't need to update state for download  
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
@@ -136,7 +140,13 @@ const Customizer = () => {
                  <Tab
                    key={tab.name}
                    tab={tab}
-                   handleClick= {() => setActiveEditorTab(tab.name)}
+                   handleClick= {() =>{
+                      setIsopen(!isopen)
+                      if(!isopen){
+                        setActiveEditorTab(tab.name)
+                      }else{setActiveEditorTab('')}
+                    }
+                   } 
                  />
               ))}
 
@@ -168,7 +178,7 @@ const Customizer = () => {
                    key={tab.name}
                    tab={tab}
                    isFilterTab
-                   isActiveTab= {activeFilterTab[tab.name]}
+                   isActiveTab= {tab.name === 'dowmload' ? true : activeFilterTab[tab.name]}
                    handleClick= {() => handleActiveFilterTab(tab.name)}
                  />
           ))}
