@@ -18,4 +18,4 @@ app.get('/', (req, res) => {
 
 app.listen(8080, () => console.log('Server has started on port 8080'))
 
-module.exports = app;
+// module.exports = app;
