@@ -178,7 +178,7 @@ const Customizer = () => {
                    key={tab.name}
                    tab={tab}
                    isFilterTab
-                   isActiveTab= {tab.name === 'dowmload' ? true : activeFilterTab[tab.name]}
+                   isActiveTab= {tab.name === 'download' ? true : activeFilterTab[tab.name]}
                    handleClick= {() => handleActiveFilterTab(tab.name)}
                  />
           ))}
